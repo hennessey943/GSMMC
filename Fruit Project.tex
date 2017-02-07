@@ -1,0 +1,89 @@
+\input{def}
+\pagestyle{empty}
+\begin{document}
+
+\begin{center}
+\large{ GSMMC \hspace{1in}  Michael Hennessey \hspace{1in}Updated May 31 2016}\end{center} 
+\bigskip
+Single Cell Model\\
+
+Cell Division$\rightarrow$ Cell Expansion$\rightarrow$ Ripening\\
+
+Focus on Cell Expansion first, then ripening, then division.\\
+
+Loosening of cell wall due to auxin stimulated acid pump.\\
+
+Cell swelling, fluid transport, a few key reactions, and cell wall remodeling.\\
+
+\begin{section}{Fruit Growth post-cell division}
+\begin{subsection}{Original Model}
+Variables:\\
+\begin{itemize}
+\item $w(t)$: amount of water
+\item $s(t)$ dry matter in fruit pulp
+\end{itemize}
+We first model the change in the amount of water in the fruit with time as the sum of the water inflow from the xylem ($U_x$) and phloem $(U_p)$ and the water outflow due to fruit transpiration ($T_f$):
+\begin{equation}
+\frac{dw}{dt}=U_x+U_p-T_f.
+\end{equation}
+The rate of change in the amount of dry matter $(ds/dt$) is the difference between the uptake from the phloem $(U_s)$ and loss through fruit respiration $(R_f$):
+\begin{equation}
+\frac{ds}{dt}=U_s-R_f.
+\end{equation}
+Fruit transpiration leading to mass loss is assumed to be proportional to the fruit surface area ($A_f)$ and to be driven by the difference in relative humidity between the air-filled space within the fruit $(H_f)$ and the ambient atmosphere $(H_a)$:
+\begin{equation}
+T_f=A_f\alpha\rho(H_f-H_a),
+\end{equation}
+where $\rho$ is the permeation coefficient of the fruit surface to water vapor and $\alpha=M_W P^*/RT,$ with $M_W=18g/mol$ being the molecular mass of water, $P^*$ the saturation vapor pressure, $R=83cm^3bar mol^{-1}K^{-1}$ the gas constant. $P^*$ is given as an exponential function
+$$P^*=.009048e^{.0547(T-273.15)} bar.$$
+The fruit surface area is related to the fruit total mass ($W_T)$ by the empirical equation
+\begin{equation}
+A_f=\gamma(W_T)^\eta.
+\end{equation}
+The fruit total mass is
+$$W_T=s+w+W_S,$$
+where $W_S$ is the fresh mass of the stone. $\gamma$ and $\eta$ depend on the fruit geometry and the density of the fruit. \\
+
+The flow density ($J$) through a membrane is described by
+\begin{equation}
+J=L[P_1-P_2-\sigma(\pi_1-\pi_2)],
+\end{equation}
+where the subscripts 1 and 2 indicate the compartments separated by the membrane; $L$ is the hydraulic conductivity coefficient; $P_{1,2}$ are the hydrostatic pressures in the respective compartments; $\pi_{1,2}$ are the respective osmotic pressures, and $\sigma$ is the reflection coefficient (a measure of the impermeability of the membrane). The osmotic pressure is given as $\pi=RT\Sigma_jC_j^{(m)}$ in which $C_j^{(m)}=n_j(V_W^*n_W)$, where $n_j$ is the number of moles of osmotically active solute, $n_W$ is the number of moles of water, and $V_w^*$ is the partial molal volume of water. \\
+The water potential $(\Psi)$ is expressed as the difference
+$$\Psi=P-\pi.$$
+
+The total flow through a membrane of area $A$ is
+\begin{equation}
+U=AJ.
+\end{equation}
+
+Using subscripts $x$, $p$ and $f$ for xylem, phloem and fruit variables, respectively, and combining equations 5 and 6 we get
+\begin{equation}
+U_x=A_xL_x[P_x-P_f-\sigma_x(\pi_x-\pi_f)]
+\end{equation}
+and
+\begin{equation}
+U_p=A_pL_p[P_p-P_f-\sigma_p(\pi_p-\pi_f)].
+\end{equation}
+The vascular network enters the fruit and enlarges as the fruit grows, with $A_x$ and $A_p$ increasing in parallel with fruit growth. 
+$$A_x(t)=a_xA_f(t),$$
+$$A_p(t)=a_pA_f(t).$$
+
+If $\sigma_p<1$, part of the sugar can be transported from the phloem to the fruit by mass flow ($U_p$). The contribution of sugar to the mass flow is $(1-\sigma_p)C_sU_p$< where $C_s\approxeq (C_p+C_f)/2$ is the mean concentration of the solute in the membrane, with $C_p$ and $C_f$ being the sugar concentrations. The total uptake of carbohydrates is
+\begin{equation}
+U_s=U_a+(1-\sigma_p)C_sU_p+A_pp_s(C_p-C_f),
+\end{equation}
+where $p_s$ is the solute permeability coefficient. The saturating uptake rate, $U_a$, is assumed dependent on the phloem concentration according to the Michealis-Menten equation for fully non-competitive inhibition with the form
+\begin{equation}
+U_a=\frac{s(t)\nu_mC_p}{(K_M+C_p)(1+C_I/K_I)},
+\end{equation}
+where $C_I=C_I^*e^{-t/\tau}$ is the inhibitor concentration and $K_I$ is the equilibrium constant for the formation of an inhibitor-carrier complex. Here, $\nu_m$ is the maximum uptake rate per unit of dry mass and $K_M$ is the Michaelis constant. The rate $U_a$ will decline with fruit age if the inhibitor accumulates in the growing fruit.\\
+
+The dry material loss through fruit respiration ($R_f$) comprises two components: that due to growth respiration, which is proportional to the rate of dry material intake, and that due to maintenance respiration, which is proportional to the dry mass
+\begin{equation}
+R_f=q_g\left(\frac{ds}{dt}\right)+q_m(T)s(t),
+\end{equation}
+where $q_g$ and $q_m(T)=q_m(293)Q_{10}^{(T-293)/10}$ are the coefficients for growth and maintenance respiration, respectively.
+\end{subsection}
+\end{section}
+\end{document} 
